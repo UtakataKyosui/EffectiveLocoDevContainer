@@ -23,7 +23,7 @@ RUN mkdir -p /workspaces/target \
 # Cargoツールをインストール
 RUN --mount=type=cache,target=/usr/local/cargo/registry,uid=1000,gid=1000 \
     --mount=type=cache,target=/usr/local/cargo/git,uid=1000,gid=1000 \
-    cargo install sea-orm-cli cargo-insta loco cargo-watch
+    cargo install sea-orm-cli cargo-insta loco cargo-watch cargo-shuttle
 
 # 環境変数ファイルをコピー
 COPY .env /.env

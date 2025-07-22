@@ -1,0 +1,61 @@
+{
+	"mcpServers": {
+		"file-system": {
+			"command": "npx",
+			"args": ["-y", "@modelcontextprotocol/server-filesystem", "/workspaces"]
+		},
+		"git": {
+			"command": "uvx",
+			"args": ["mcp-server-git"]
+		},
+		"github": {
+			"command": "npx",
+			"args": ["-y", "@modelcontextprotocol/server-github"],
+			"env": {
+				"GITHUB_PERSONAL_ACCESS_TOKEN": "$GITHUB_PERSONAL_ACCESS_TOKEN"
+			}
+		},
+		"fetch": {
+			"command": "uvx",
+			"args": ["mcp-server-fetch"]
+		},
+		"Context7": {
+			"command": "npx",
+			"args": ["-y", "@upstash/context7-mcp"]
+		},
+		"sequential-thinking": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-sequential-thinking"
+			]
+		},
+		"firecrawl-mcp": {
+			"command": "npx",
+			"args": ["-y", "firecrawl-mcp"],
+			"env": {
+				"FIRECRAWL_API_KEY": "$FIRECRAWL_API_KEY",
+				"FIRECRAWL_RETRY_MAX_ATTEMPTS": "5",
+				"FIRECRAWL_RETRY_INITIAL_DELAY": "2000",
+				"FIRECRAWL_RETRY_MAX_DELAY": "30000",
+				"FIRECRAWL_RETRY_BACKOFF_FACTOR": "3",
+				"FIRECRAWL_CREDIT_WARNING_THRESHOLD": "2000",
+				"FIRECRAWL_CREDIT_CRITICAL_THRESHOLD": "500"
+			}
+		},
+		"loco-cite": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"sitemcp@latest",
+				"https://loco.rs",
+				"-m",
+				"/**"
+			]
+		},
+		"Shuttle": {
+			"command": "shuttle",
+			"args": ["mcp", "start"]
+		}
+	}
+}
