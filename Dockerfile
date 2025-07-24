@@ -5,9 +5,14 @@ FROM mcr.microsoft.com/devcontainers/rust:latest
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive
 
 # 必要なパッケージを一括インストール
-RUN apt-get -y install --no-install-recommends \
+RUN sudo apt update && apt-get -y install --no-install-recommends \
+	gcc \
     postgresql-client \
 	build-essential \
+	pkg-config \
+    libssl-dev \
+    libpq-dev \
+    libc6-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
