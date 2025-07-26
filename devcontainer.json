@@ -2,7 +2,7 @@
     "name": "Loco",
     "dockerComposeFile": "compose.yaml",
     "service": "app",
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "workspaceFolder": "/workspace",
     "forwardPorts": [5150, 5432, 6379, 1080, 1025],
     
     // VS Code拡張機能の事前インストール
@@ -17,6 +17,7 @@
                 "vivaxy.vscode-conventional-commits"
             ],
             "settings": {
+				"remote.restoreForwardedPorts": true,
                 // Rust Analyzer設定
                 "rust-analyzer.cargo.buildScripts.enable": true,
                 "rust-analyzer.procMacro.enable": true,

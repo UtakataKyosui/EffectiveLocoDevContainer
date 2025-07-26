@@ -4,18 +4,21 @@ services:
       context: .
       dockerfile: Dockerfile
     command: sleep infinity
+    stdin_open: true
+    tty: true
     networks:
       - db
       - redis
       - mailer
     volumes:
-      # cachedマウントで読み取りパフォーマンス向上
-      - ../..:/workspaces:cached
+      - ../:/workspace
+      # MCP Setting JSON
+      - ./.mcp.json:/workspace/.mcp.json
       # Cargoキャッシュを名前付きボリュームで永続化
       - cargo-cache:/usr/local/cargo/registry
       - cargo-git-cache:/usr/local/cargo/git
       # ビルド成果物をキャッシュ（プロジェクト名は動的に設定）
-      - target-cache:/workspaces/target
+      - target-cache:/workspace/target
     env_file:
       - .env
     ports:
@@ -24,9 +27,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 4G
+          memory: 8G
         reservations:
-          memory: 2G
+          memory: 4G
   db:
     image: postgres:15.3-alpine
     restart: unless-stopped
